@@ -49,8 +49,8 @@ minDragFriccion = 20
 maxDragFriccion = 200
 
 
-def printTexto(data, title, font, x, y, window):
-    label = font.render("{} {}".format(title, data), 1, DATA_FONT_COLOR)
+def printTexto(data, title, font, x, y, window, color=DATA_FONT_COLOR):
+    label = font.render("{} {}".format(title, data), 1, color)
     window.blit(label, (x, y))
 
 
@@ -114,8 +114,12 @@ def dibujarVentana(window, FONT, dt):
     window.fill(COLOR_WINDOW, (0, 0, WIDTH, HEIGHT))
 
     # Dibujar labels
-    printTexto(gameTime / 1000, "Tiempo de simulación: ", FONT, 20, 20, window)
-    printTexto(round(1000 / dt, 2), "FPS: ", FONT, 20, 50, window)
+    printTexto(gameTime / 1000, "Tiempo: ", FONT, 20, 20, window)
+    if round(1000 / dt, 2) < 400:
+        printTexto(round(1000 / dt, 2), "FPS: (bajo)...", FONT, 20, 50, window, COLOR_TARGET)
+    else:
+        # COLOR_TARGET
+        printTexto(round(1000 / dt, 2), "FPS: ", FONT, 20, 50, window)
 
 
 def dibujarLineaGuia(window):
@@ -191,10 +195,10 @@ def dibujarDragFriccion(window, FONT):
     return pygame.draw.rect(window, COLOR_DRAGS, (xDragFriccion, 190, LENGTH_SQUARE / 2, LENGTH_SQUARE))
 
 
-def simulacion(window, FONT):
+def simulacion(window):
     global gameTime, fire, posX, deltaX, velocidadInicialY, tiempo, friccion, primerGolpe, xMouse, xMousePunto, \
         yMouse, isMouseDown, posY, estaEnDragRebote, estaEnDragFriccion
-
+    FONT = pygame.font.SysFont("monospace", 16)
     # Actualizar Reloj
     dt = actualizarReloj()
 
