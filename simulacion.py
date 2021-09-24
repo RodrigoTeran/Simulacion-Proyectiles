@@ -1,5 +1,12 @@
-# Solo uso la librería math para sacar raíz cuadrada en una fórmula de física
-import math, sys, pygame
+"""
+    Readme:
+        No se usa ninguna librería para hacer los cálculos...
+        lo único que se utiliza es pygame pero para mostrar los gráficos...
+        todas las operaciones con la fricción, rebote, gravedad, tiro parabólico, fuerzas, etc
+        se hacen con puros ciclos, comparaciones, etc...
+"""
+import sys
+import pygame
 from constantes import *
 
 clock = pygame.time.Clock()         # Se inicializa un reloj para medir el tiempo de juego
@@ -46,13 +53,17 @@ posY = HEIGHT - ALTURA_PISO - LENGTH_SQUARE  # Posicion inicial: HEIGHT - altura
 # -------------- Ecuaciones física --------------
 # El "tiempoAAlturaYMouse" se refiere al tiempo ocupado en esta fórmula de la física para posteriormente conocer en qué
 # posicion debería estar el cubo en x
-tiempoAAlturaYMouse = (-velocidadInicialY + math.sqrt(velocidadInicialY ** 2 + 2 * GRAVEDAD * velocidadInicialY)) \
-                      / (GRAVEDAD)
+tiempoAAlturaYMouse = (-velocidadInicialY + (abs(
+        velocidadInicialY ** 2 + 2 * GRAVEDAD * velocidadInicialY)) ** .5) \
+                          / GRAVEDAD
 
 # Con "tiempoAAlturaYMouse" calculamos la nueva posición de x
 diffX = int(tiempoAAlturaYMouse / deltaTiempo)
 
 # Ahora ya sabemos cuanto moverlo, sería el deltaX
+if diffX == 0:
+    # Por si se divide por 0
+    diffX += .0001
 deltaX = velocidadInicialX / diffX
 
 # -------------- Valores booleanos --------------
@@ -212,8 +223,8 @@ def preDisparo():
     velocidadInicialY = yMouse / sensibilidad
     velocidadInicialX = xMouse / sensibilidad
 
-    tiempoAAlturaYMouse = (-velocidadInicialY + math.sqrt(abs(
-        velocidadInicialY ** 2 + 2 * GRAVEDAD * velocidadInicialY))) \
+    tiempoAAlturaYMouse = (-velocidadInicialY + (abs(
+        velocidadInicialY ** 2 + 2 * GRAVEDAD * velocidadInicialY)) ** .5) \
                           / GRAVEDAD
     diffX = int(tiempoAAlturaYMouse / deltaTiempo)
     if diffX == 0:
