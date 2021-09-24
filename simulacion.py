@@ -238,7 +238,7 @@ def moverRectanguloRebote():
         Esta funcion se encarga de mover el input que cambia el rebote del cuadrado
     """
     global xDragRebote, rebote
-    x, y = pygame.mouse.get_pos()
+    x, _ = pygame.mouse.get_pos()
     if x < minDragRebote:
         # por si el mouse del usuario esta muy a la izquierda, para que no lo mueva
         x = minDragRebote
@@ -266,7 +266,7 @@ def moverRectanguloFriccion():
         Esta funcion se encarga de mover el input que cambia la friccion del cuadrado
     """
     global xDragFriccion, friccion
-    x, y = pygame.mouse.get_pos()
+    x, _ = pygame.mouse.get_pos()
     if x < minDragFriccion:
         # por si el mouse del usuario esta muy a la izquierda, para que no lo mueva
         x = minDragFriccion
