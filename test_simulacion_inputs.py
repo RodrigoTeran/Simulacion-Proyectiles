@@ -10,18 +10,18 @@ def mover_rectangulo_friccion():
     # x, y = 320, 34
     # Vamos a usar muuuchos...
 
-    minDragFriccion = 20
-    maxDragFriccion = 200
+    min_drag_friccion = 20
+    max_drag_friccion = 200
     for y in range(HEIGHT + 1):
         for x in range(WIDTH + 1):
-            if x < minDragFriccion:
+            if x < min_drag_friccion:
                 # por si el mouse del usuario esta muy a la izquierda, para que no lo mueva
-                x = minDragFriccion
-            if x > maxDragFriccion:
+                x = min_drag_friccion
+            if x > max_drag_friccion:
                 # por si el mouse del usuario esta muy a la derecha, para que no lo mueva
-                x = maxDragFriccion
+                x = max_drag_friccion
             xDragFriccion = x
-            friccion = round(((xDragFriccion - minDragFriccion) / (maxDragFriccion - minDragFriccion)) * 0.02, 6)
+            friccion = round(((xDragFriccion - min_drag_friccion) / (max_drag_friccion - min_drag_friccion)) * 0.02, 6)
             if friccion < 0 or friccion > 0.02:
                 # Esto significa que no paso la prueba
                 print("Error con: ", y, x)
@@ -43,19 +43,19 @@ def mover_rectangulo_rebote():
     # x, y = 320, 34
     # Vamos a usar muuuchos...
 
-    minDragRebote = 20
-    maxDragRebote = 200
+    min_drag_rebote = 20
+    max_drag_rebote = 200
 
     for y in range(HEIGHT + 1):
         for x in range(WIDTH + 1):
-            if x < minDragRebote:
+            if x < min_drag_rebote:
                 # por si el mouse del usuario esta muy a la izquierda, para que no lo mueva
-                x = minDragRebote
-            if x > maxDragRebote:
+                x = min_drag_rebote
+            if x > max_drag_rebote:
                 # por si el mouse del usuario esta muy a la derecha, para que no lo mueva
-                x = maxDragRebote
+                x = max_drag_rebote
             xDragRebote = x
-            rebote = round((xDragRebote - minDragRebote) / (maxDragRebote - minDragRebote), 2)
+            rebote = round((xDragRebote - min_drag_rebote) / (max_drag_rebote - min_drag_rebote), 2)
             if rebote < 0 or rebote > 1:
                 # Esto significa que no paso la prueba
                 print("Error con: ", y, x)

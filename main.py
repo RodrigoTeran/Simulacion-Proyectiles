@@ -22,6 +22,10 @@ ventana = Ventana()
 
 
 def main():
+    """
+        Esta función inicializa todo el programa y corre
+        el bucle principal de pygame
+    """
     while True:                     # Así se maneja pygame, en cada iteración del bucle se actualiza la pantalla
         if ventana.screen == 1:
             # Ventana que muestra las reglas y lo que trata el programa

@@ -119,7 +119,7 @@ def checar_limites():
         tiempo = 0
         velocidad_inicial_y = velocidad_inicial_y * rebote
         primer_golpe = True
-    if pos_x >= WIDTH:
+    if pos_x >= WIDTH - LENGTH_SQUARE:
         pos_x = WIDTH - LENGTH_SQUARE
         delta_x = 0
     if pos_x < 0:
@@ -129,7 +129,7 @@ def checar_limites():
 
 def disparar(window):
     """
-        Esta función es la que se ancarga de mover al cuadrado cuando se dispara
+        Esta función es la que se encarga  de mover al cuadrado cuando se dispara
         Primero cambia las posiciones, checa los límites, y dibuja el cuadrado rojo
         que muestra donde disparamos
     """
@@ -208,7 +208,7 @@ def pre_disparo():
     global is_mouse_down, fire, pos_y, tiempo, primer_golpe, x_mouse_punto, y_mouse, x_mouse, velocidad_inicial_y, \
         velocidad_inicial_x, tiempo_a_altura_y_mouse, GRAVEDAD, diff_x, delta_x
     """
-        Esta funcion se encarga a preparar todas las variables antes de disprar.
+        Esta funcion se encarga a preparar todas las variables antes de disparar.
         Las reinicia.
     """
     # Reiniciar variables

@@ -40,7 +40,7 @@ def print_texto(title, font, x, y, window, color):
 def grabar(nueva_posicion, ventana):
   """
     Esta función sirve para guardar los valores (x, y) en la matriz y
-    Crear el archivo csv
+    crear el archivo csv
   """
   global contador_para_matriz, matriz_posiciones, csv_number
   if ventana.esta_grabando:   # Si esta en grabar

@@ -1,8 +1,8 @@
 import pygame, sys
 from constantes import *
 
-drags_img = pygame.image.load(r'images/drags.JPG')       # Se carga la primera imagen
-square_img = pygame.image.load(r'images/square.png')     # Se carga la segunda imagen
+drags_img = pygame.image.load(r'drags.JPG')       # Se carga la primera imagen
+square_img = pygame.image.load(r'square.png')     # Se carga la segunda imagen
 
 
 def print_texto(title, font, x, y, window, color):
@@ -66,6 +66,11 @@ def dibujar_instrucciones(window, FONT):
 
 
 def reglas_simulacion(window, ventana):
+    """
+        Esta función es la principal. Aquí se para la referencia a window desde el archivo main.py
+        Además también se le pasa el objeto ventana para saber si dibujar las reglas o no por su atributo
+        "screen".
+    """
     # Aquí creo diferentes fonts para usarlos en el programa
     FONT_36_Arial = pygame.font.SysFont("Arial Bold", 36)
     FONT_60 = pygame.font.SysFont("Arial Bold", 60)
