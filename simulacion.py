@@ -7,6 +7,8 @@
 """
 import sys
 import pygame
+from guardar import grabar
+from guardar import dibujar_boton_grabar_datos
 from constantes import *
 
 clock = pygame.time.Clock()         # Se inicializa un reloj para medir el tiempo de juego
@@ -289,7 +291,7 @@ def dibujar_drag_friccion(window, FONT):
     return pygame.draw.rect(window, COLOR_DRAGS, (x_drag_friccion, 190, LENGTH_SQUARE / 2, LENGTH_SQUARE))
 
 
-def simulacion(window):
+def simulacion(window, ventana):
     global game_time, fire, pos_x, delta_x, velocidad_inicial_y, tiempo, friccion, primer_golpe, x_mouse, x_mouse_punto, \
         y_mouse, is_mouse_down, pos_y, esta_en_drag_rebote, esta_en_drag_friccion
 
@@ -332,6 +334,16 @@ def simulacion(window):
 
     # Dibujar Piso
     dibujar_piso(window)
+    
+    """
+        Funcionalidad para guardar los datos en un archivo csv
+    """
+    # se guarda la referencia del botón para poder saber si se le da click
+    boton_grabar_datos = dibujar_boton_grabar_datos(window, ventana)
+    
+    if not (not fire or velocidad_inicial_y < 1):
+        # Checa que el cubito no este quieto, ya que solo se guardarían muchos datos iguales
+        grabar((pos_x, HEIGHT - pos_y), ventana)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -347,7 +359,15 @@ def simulacion(window):
                     esta_en_drag_rebote = True
                 elif dragFriccionRectangulo.collidepoint(event.pos):    # Se checa si el click fue al input friccion
                     esta_en_drag_friccion = True
-                elif not fire or velocidad_inicial_y < 1:                 # Se checa si puede ya dibujar el vector
+                elif boton_grabar_datos.collidepoint(event.pos):
+                    # Se cambia el evento de grabar
+                    ventana.esta_grabando = not ventana.esta_grabando
+                    
+                    # Si se apagó el evento, entonces se tienen que guardar los valores obtenidos
+                    if not ventana.esta_grabando:
+                        grabar((pos_x, HEIGHT - pos_y), ventana)
+                elif (not fire or velocidad_inicial_y < 1):
+                    # Se checa si puede ya dibujar el vector
                     # Se espera a que el cuadrado no este todavia rebotando y que el fire sea Falso
                     # Evento del mouse para dibujar linea guia
                     is_mouse_down = True

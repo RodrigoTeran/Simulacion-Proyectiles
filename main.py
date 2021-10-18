@@ -14,7 +14,8 @@ pygame.display.set_caption("Proyecto Final")        # Le pone título a la venta
 """
 class Ventana:
     def __init__(self):
-        self.screen = 1
+        self.screen = 1                     # Para saber en qué pantalla estamos
+        self.esta_grabando = False          # Para saber si se estan grabando los datos o no
 
 
 ventana = Ventana()
@@ -27,7 +28,7 @@ def main():
             reglas_simulacion(window, ventana)
         elif ventana.screen == 2:
             # Ventana que muestra la simulación de proyectiles
-            simulacion(window)
+            simulacion(window, ventana)
         pygame.display.update()     # Se actualiza la ventana
 
 
