@@ -1,7 +1,7 @@
 from constantes import *
 
 
-def checarLimites():
+def checar_limites():
     """
         Con este test vamos a ver si si checa bien los límites
     """
@@ -25,10 +25,10 @@ def checarLimites():
             continue
         break
     else:
-        print("Todo bien con checarLimites()")
+        print("Todo bien con checar_limites()")
         return
 
 
 if __name__ == "__main__":
     print("Tests:\n")
-    checarLimites()  # Esta funcion pasa correctamente
+    checar_limites()  # Esta funcion pasa correctamente

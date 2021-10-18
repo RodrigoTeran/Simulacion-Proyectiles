@@ -1,7 +1,7 @@
 from constantes import *
 
 
-def moverRectanguloFriccion():
+def mover_rectangulo_friccion():
     """
         Con este test vamos a ver si esta funcion me va a editar la friccion
         con un valor desde 0 a 0.02 inclusivamente
@@ -30,11 +30,11 @@ def moverRectanguloFriccion():
             continue
         break
     else:
-        print("Todo bien con moverRectanguloFriccion()")
+        print("Todo bien con mover_rectangulo_friccion()")
         return
 
 
-def moverRectanguloRebote():
+def mover_rectangulo_rebote():
     """
         Con este test vamos a ver si esta funcion me va a editar el rebote
         con un valor desde 0 a 1 inclusivamente
@@ -64,11 +64,11 @@ def moverRectanguloRebote():
             continue
         break
     else:
-        print("Todo bien con moverRectanguloRebote()")
+        print("Todo bien con mover_rectangulo_rebote()")
         return
 
 
 if __name__ == "__main__":
     print("Tests:\n")
-    moverRectanguloFriccion()  # Esta funcion pasa correctamente
-    moverRectanguloRebote()    # Esta funcion pasa correctamente
+    mover_rectangulo_friccion()  # Esta funcion pasa correctamente
+    mover_rectangulo_rebote()    # Esta funcion pasa correctamente

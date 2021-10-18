@@ -1,6 +1,6 @@
 from constantes import *                # Constantes del programa
 import pygame                           # Librería para mostrar solo los gráficos
-from reglas import reglasSimulacion     # Primera ventana
+from reglas import reglas_simulacion     # Primera ventana
 from simulacion import simulacion       # Segunda ventana
 
 pygame.init()                                       # Inicializa pygame
@@ -24,7 +24,7 @@ def main():
     while True:                     # Así se maneja pygame, en cada iteración del bucle se actualiza la pantalla
         if ventana.screen == 1:
             # Ventana que muestra las reglas y lo que trata el programa
-            reglasSimulacion(window, ventana)
+            reglas_simulacion(window, ventana)
         elif ventana.screen == 2:
             # Ventana que muestra la simulación de proyectiles
             simulacion(window)
